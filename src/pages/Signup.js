@@ -106,7 +106,7 @@ const Signup = () => {
         <div className="error">{formik.errors.email}</div>
         <input onBlur={formik.handleBlur} onChange={formik.handleChange} name="password" type="password" placeholder="password" /><br/>
         <div className="error">{formik.errors.password}</div>
-        <input type="checkbox" />I agree to the terms and conditions
+        <input type="checkbox" />I agree to the terms and conditions<br/>
         <button  type="submit">Create Account</button>
         <p>Have an account? <Link className="link" to="/">Login</Link></p>
     </form>;

@@ -48,8 +48,8 @@ const Transfer = ({activeUser}) => {
         let index2 = alluser.findIndex(user=>user.Accountnum===Number(transferTo))
         let sender={...alluser[index]}
         let receiver={...alluser[index2]}
-        sender.recentTransaction.push(debitDetails)
-        receiver.recentTransaction.push(creditDetails)
+        sender.recentTransaction.unshift(debitDetails)
+        receiver.recentTransaction.unshift(creditDetails)
         alluser[index]=sender
         alluser[index2]=receiver
         localStorage.AllUser=JSON.stringify(alluser)
@@ -67,8 +67,7 @@ const Transfer = ({activeUser}) => {
         if(/[\d]{10}/g.test(event.target.value)){
             let alluser =JSON.parse(localStorage.AllUser)
             setTransferTo(event.target.value)
-            console.log(event.target.value)
-            console.log(alluser[0].Accountnum)
+            
             for(let i=0;i<alluser.length;i++){
                 if(alluser[i].Accountnum===Number(event.target.value)){
                     setBan((alluser[i].FirstName+" "+alluser[i].LastName))                    

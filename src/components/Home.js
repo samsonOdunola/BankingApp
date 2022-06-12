@@ -38,7 +38,7 @@ const Home = () => {
             <div className="iconCluster">
                 <p>{loading&&`Hi, ${activeUser.FirstName}`}</p>
                 <img src={require("../images/image-1.png")} alt="" />
-                <MdNotifications onClick={reset}/>
+                <MdNotifications  onClick={reset}/>
             </div>
             
         </header>

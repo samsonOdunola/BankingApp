@@ -1,5 +1,8 @@
 import { IoCopyOutline } from "react-icons/io5";
 import { useEffect,useState } from "react";
+import { SiVisa } from "react-icons/si";
+import { FaRegCreditCard } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
 const Dashboard = () => {
     const [activeUser, setActiveUser] = useState()
     const [loading, setLoading] = useState(false)
@@ -42,7 +45,21 @@ const Dashboard = () => {
             </div>
         </div>}
         {loading&&<div className="cardinfo">
-            <h3>Credit Cards</h3>
+            <div className="head"><h3>Credit Cards</h3> < FaRegCreditCard className="cardicon"/></div>
+            <div className="creditcard">
+                <p className="cardname">Loft Bank | AlphaBank</p>
+                <p className="cardnum"> 4532 4141 5341 3221</p>
+                <div><p>08/24</p><SiVisa className="visaicon"/></div>
+            </div>
+            <div className="sendagain">
+                <h1>Send Again</h1>
+                <div className="container">
+                    <button className="icon"><FiArrowRight/></button>
+                    <div className="icon people"></div>
+                    <div className="icon people"></div>
+                </div>
+                
+            </div>
         </div>}
         
 

@@ -5,14 +5,14 @@
   font-family: "josefin sans"
 }
 body{
-  background:url(./images/doodles.png),hsl(327, 100%, 80%);
-  background-blend-mode: overlay;
+  background: linear-gradient(40deg, #DCF0F5, #F7F3FA);
+  height: 100vh;
   
   
 }
 .form{
   text-align: center;
-  background: #f1f1f1;
+  background: hsla(0, 0%, 100%, 0.356);
   padding: 2.5vw;
   max-width: 40vw;
   margin: 40px auto;
@@ -51,11 +51,11 @@ body{
   font-size: 1vw;
 }
 .form button{
-  width: 100%;
+  width: 50%;
   padding: 0.7vw;
   margin: 20px 0;  
   border: none;  
-  background-color:#06113c;
+  background-color:#111010;
   color: #fff;
   font-size: 1vw;
   font-weight: 500;
@@ -72,13 +72,14 @@ body{
   text-decoration: none;
   color:blue;
 }
-.form .error{
+.error{
   color:rgb(255, 0, 0);
   text-align: left;
   
 }
 main{
-  background: linear-gradient(40deg, #DCF0F5,#DCF0F5, #F7F3FA);
+  background: linear-gradient(40deg, #DCF0F5, #F7F3FA);
+  
   height: 100vh;
   color:#111010;
 }
@@ -167,9 +168,11 @@ nav ul li .menu-icon{
 }
 main section{
   display: flex;
+  
 }
 .dashboard{
   background-color: transparent;
+  justify-content: space-between;
   padding: 2vw 1vw;
   height:90vh;
   display: flex;
@@ -177,7 +180,7 @@ main section{
 }
 .dashboard .accountinfo{
   /* background-color: red; */
-  width:40%;
+  width:50%;
   
 }
 .dashboard .accountinfo h3{
@@ -314,8 +317,117 @@ main section{
   color: blue;
 }
 
-.form2 .error {
+.error {
   color: rgb(255, 0, 0);
   text-align: left;
 
+}
+.cardinfo{
+  background-color: transparent;
+  width:40%;
+}
+.head h3{
+  font-size: 1vw;
+  text-transform: uppercase;
+}
+.creditcard{
+  background: linear-gradient(190deg, #3a3a3a, hsl(0, 0%, 33%));
+  margin-top: 1.5vw;
+  width:100%;
+  height:37%;
+  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding:1vw;
+  color: rgb(255, 255, 255);
+  
+}
+.creditcard .cardnum{
+  text-align: center;
+  letter-spacing: 10px;
+  font-weight: 400;
+  font-size: 1.7vw;
+  
+}
+.creditcard div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.creditcard div .visaicon{
+  font-size: 2.5vw;
+}
+.cardinfo .head{
+  display: flex;
+  justify-content: space-between;
+}
+.cardinfo .head .cardicon{
+  font-size: 2.4vw;
+  background-color:#111010;
+  padding:0.6vw;
+  border-radius: 50%;
+  color:white;
+}
+.sendagain{
+  margin-top:1vw;
+}
+.sendagain h1{
+  font-size: 0.9vw;
+  text-transform: uppercase;
+  margin-bottom:0.5vw;
+}
+.sendagain .container{
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  
+}
+.sendagain div div{
+  margin-right: 1vw;
+  width:3vw;
+  height:3vw;
+  border-radius: 50%;
+  background:url(/src/images/image-1.png);
+  background-size:cover;
+}
+.sendagain button{
+  width:3vw;
+  height:3vw;
+  border-radius: 50%;
+  border-style:none;
+  margin-right: 1vw;
+  cursor: pointer;
+  color:white;
+  background-color: black;
+  font-size: 1vw;
+}
+.walletcontainer{
+  background-color:red;
+  width:100%;
+  padding:2vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.walletcontainer button{
+  width: fit-content;
+    padding: 0.7vw;
+    
+    border: none;
+    background-color: #111010;
+    color: #fff;
+    font-size: 1vw;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+  margin:0 auto;
+}
+.walletcontainer .wallet{
+  background-color: #06113c;
+  border-radius: 10px;
+  cursor:pointer;
+  
 }
