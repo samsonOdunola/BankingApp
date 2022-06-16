@@ -402,20 +402,35 @@ main section{
   background-color: black;
   font-size: 1vw;
 }
-.walletcontainer{
-  background-color:red;
-  width:100%;
-  padding:2vw;
+.mainwalletcontainer{
+  position:relative;
+  background-color: transparent;
+  width: 100%;
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+
+}
+.mainwalletcontainer .popup{  
+  position: absolute;
+  display: block;  
+  z-index: 1;
+  left:40%;
+  
+  
+}
+.walletcontainer{    
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 }
-.walletcontainer button{
-  width: fit-content;
-    padding: 0.7vw;
-    
+.mainwalletcontainer button{
+    width: fit-content;
+    padding: 0.7vw;    
     border: none;
     background-color: #111010;
     color: #fff;
@@ -423,11 +438,21 @@ main section{
     font-weight: 500;
     cursor: pointer;
     border-radius: 8px;
-  margin:0 auto;
+    margin:0 auto;
+    
+    display: block;
 }
 .walletcontainer .wallet{
-  background-color: #06113c;
+  background-color: #06113c65;
   border-radius: 10px;
   cursor:pointer;
-  
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:1vw 0;
+  justify-content:space-between;
+  height: 7vw;
 }
+
+

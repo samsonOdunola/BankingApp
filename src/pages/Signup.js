@@ -17,7 +17,8 @@ const Signup = () => {
         let Accountnum =generateRandomnumber
         let AccountBalance = 2000
         let recentTransaction = []
-        let user = {...values,Accountnum,AccountBalance,recentTransaction};
+        let wallets = []
+        let user = {...values,Accountnum,AccountBalance,recentTransaction,wallets};
         if(!localStorage.AllUser){
             let finalAllUser=[] 
             finalAllUser.push(user)
