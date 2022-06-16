@@ -1,12 +1,21 @@
 import { useState,useEffect } from "react";
 import { Formik, useFormik } from "formik";
+
 const Wallet = () => {
     const [modal, setModal] = useState(false);
     const [activeUser, setActiveUser] = useState()
     const [loading, setLoading] = useState(false)
-    const createWallet = () => {
-        console.log("working");
+    const createWallet = () => {        
         setModal(true);
+    }
+    const debitAccount=(Amount)=>{        
+        let alluser=JSON.parse(localStorage.AllUser)
+        let userAccountnum = JSON.parse(localStorage.currentUser).Accountnum;
+        let index = alluser.findIndex(user=>user.Accountnum===userAccountnum)        
+        let updatedUser={...alluser[index]}        
+        updatedUser.AccountBalance=updatedUser.AccountBalance-Amount       
+        alluser[index]=updatedUser        
+        localStorage.AllUser=JSON.stringify(alluser)
     }
     const getCurrentUser=()=>{
         let currentUser =JSON.parse(localStorage.currentUser)
@@ -30,8 +39,10 @@ const Wallet = () => {
         userWallet.push(newWallet);
         alluser[index].wallets = userWallet;
         localStorage.AllUser=JSON.stringify(alluser)
+        debitAccount(amount)
         updateActiveUser()
         setModal(false);
+        
     }
     const updateActiveUser=()=>{
         let alluser=JSON.parse(localStorage.AllUser)
