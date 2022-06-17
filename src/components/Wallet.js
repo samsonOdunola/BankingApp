@@ -1,12 +1,36 @@
 import { useState,useEffect } from "react";
 import { Formik, useFormik } from "formik";
-
+import { useNavigate } from "react-router-dom";
 const Wallet = () => {
     const [modal, setModal] = useState(false);
     const [activeUser, setActiveUser] = useState()
     const [loading, setLoading] = useState(false)
+    const navigate= useNavigate()
+    
     const createWallet = () => {        
         setModal(true);
+    }
+    const deleteWallet = (index,Amount) => {
+        let amount = Number(Amount)
+        let alluser=JSON.parse(localStorage.AllUser)
+        let userAccountnum = activeUser.Accountnum;
+        let indexs = alluser.findIndex(user=>user.Accountnum===userAccountnum)        
+        let updatedUser={...alluser[indexs]}
+        let userWallet = activeUser.wallets        
+        userWallet.splice(index,1)        
+        updatedUser.wallets = userWallet
+        updatedUser.AccountBalance +=Amount        
+        alluser[indexs]=updatedUser
+        localStorage.AllUser=JSON.stringify(alluser)
+        updateActiveUser()
+        alert("Wallet Deleted")
+        navigate("/home/wallet")
+
+        
+
+        
+        
+
     }
     const debitAccount=(Amount)=>{        
         let alluser=JSON.parse(localStorage.AllUser)
@@ -60,8 +84,7 @@ const Wallet = () => {
                 Amount:""                         
                 
             },
-            onSubmit:(values)=>{
-                console.log("working")
+            onSubmit:(values)=>{               
                 closeModal(values.walletName,values.Amount)
                 
                 
@@ -100,11 +123,12 @@ const Wallet = () => {
             <button onClick={(walletName,Amount)=>closeModal}>Create</button>
         </form>}
         <div className="walletcontainer">
-            {loading && activeUser.wallets.map(wallet=>{
+            {loading && activeUser.wallets.map((wallet,index)=>{
                 const {walletName,amount}=wallet
-                return <div  className="wallet">
+                return <div key={index} className="wallet">
                     <h3>{walletName}</h3>
                     <p>$ {amount}</p>
+                    <div className="wallet-buttons"><button>Fund</button><button onClick={()=>deleteWallet(index,amount)} >Delete</button><button>Withdraw</button></div>
                 </div>
             })}
                

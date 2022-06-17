@@ -444,15 +444,32 @@ main section{
 }
 .walletcontainer .wallet{
   background-color: #06113c65;
-  border-radius: 10px;
-  cursor:pointer;
+  border-radius: 10px;  
   text-align: center;
   display:flex;
   flex-direction: column;
   align-items: center;
-  padding:1vw 0;
+  padding:0.3vw 0;
   justify-content:space-between;
   height: 7vw;
+}
+.wallet-buttons{
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  width: 100%;
+}
+.wallet-buttons button{
+  font-size: 0.8vw;
+  width:fit-content;
+  background-color: #111010;
+  color:white;
+  border-style: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.wallet-buttons button:hover{
+  background-color: #06113c;
 }
 
 

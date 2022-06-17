@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
@@ -13,18 +12,27 @@ const Login = () => {
             password:"",
         },
         onSubmit:(values)=>{
-            console.log(values)
+            // console.log(values)
             if(localStorage.AllUser){
                 let alluser = JSON.parse(localStorage.AllUser);
-            for (let i = 0; i < alluser.length; i++) {                
-                if (alluser[i].email === values.email && alluser[i].password === values.password) {
-                    localStorage.currentUser=JSON.stringify(alluser[i]);                   
-                    
+                let user = alluser.find(user=>user.email===values.email && user.password===values.password)
+                if(user !== undefined){
+                    localStorage.currentUser=JSON.stringify(user);  
+                    navigate("/home/dashboard")
+                }else{
+                    alert("User not found")
                 }
-            }
+                
+
+            }else{
+                alert("Please Create an Account First")
+                navigate("/signup")
 
             }
-            navigate("/home/dashboard")
+           
+
+            
+            
             
         },
         validate:(values)=>{
