@@ -75,15 +75,7 @@ const Transfer = ({activeUser}) => {
                 }else{
                     alert("Account number not found")
                 }
-            // for(let i=0;i<alluser.length;i++){
-            //     if(alluser[i].Accountnum===Number(event.target.value)){
-            //         setBan((alluser[i].FirstName+" "+alluser[i].LastName))                    
-                    
-            //     }else{
-            //         alert("Account number not found")
-            //         console.log(ban)
-            //     }
-            // }
+            
         }
 
     }

@@ -45,9 +45,25 @@ const Signup = () => {
                 password:'',
                 
             },
-            onSubmit:(values)=>{                                
+            onSubmit:(values)=>{
+                if(localStorage.AllUser){
+                let alluser = JSON.parse(localStorage.AllUser);
+                let user = alluser.find(user=>user.email===values.email)
+                if(user !== undefined){
+                    alert("User already exists")
+                }else{
+                    saveUsertoDB(values,generateRandomnumber(values.Accounttype));
+                    alert("Account Created Successfully")
+                    navigate("/")
+                }
+                
+
+            }else{
                 saveUsertoDB(values,generateRandomnumber(values.Accounttype));
+                alert("Account Created Successfully")
                 navigate("/")
+
+            }
                 
                 
             },            
