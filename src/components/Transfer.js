@@ -11,6 +11,7 @@ const Transfer = ({activeUser}) => {
         debitAccount()  
         storeTransaction()
         updateActiveUser()
+        alert("Transfer Successful")
         navigate("/home/dashboard")      
         
         
@@ -67,16 +68,22 @@ const Transfer = ({activeUser}) => {
         if(/[\d]{10}/g.test(event.target.value)){
             let alluser =JSON.parse(localStorage.AllUser)
             setTransferTo(event.target.value)
-            
-            for(let i=0;i<alluser.length;i++){
-                if(alluser[i].Accountnum===Number(event.target.value)){
-                    setBan((alluser[i].FirstName+" "+alluser[i].LastName))                    
+            let user = alluser.find(user=>user.Accountnum===Number(event.target.value))
+            if(user !== undefined){
+                    setBan(user.FirstName+" "+user.LastName)  
                     
                 }else{
                     alert("Account number not found")
-                    console.log(ban)
                 }
-            }
+            // for(let i=0;i<alluser.length;i++){
+            //     if(alluser[i].Accountnum===Number(event.target.value)){
+            //         setBan((alluser[i].FirstName+" "+alluser[i].LastName))                    
+                    
+            //     }else{
+            //         alert("Account number not found")
+            //         console.log(ban)
+            //     }
+            // }
         }
 
     }

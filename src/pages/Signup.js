@@ -29,14 +29,7 @@ const Signup = () => {
             localStorage.AllUser=JSON.stringify(finalAllUser)
         }
         
-        // console.log(alluser)
-        // console.log(finalAllUser)      
-               
-        // setAlluser(finalAllUser)
         
-        
-         
-        // console.log(user)
         
     }
 
@@ -52,9 +45,7 @@ const Signup = () => {
                 password:'',
                 
             },
-            onSubmit:(values)=>{
-                console.log("working")
-                console.log(values)                
+            onSubmit:(values)=>{                                
                 saveUsertoDB(values,generateRandomnumber(values.Accounttype));
                 navigate("/")
                 
@@ -79,12 +70,10 @@ const Signup = () => {
         }
         
     )
-    console.log(formik.errors.FirstName)
-    
+    console.log(formik.errors.FirstName)   
     
 
-    // create function that create account number based on type of account selected
-    // create function that create account number based on type of account selected
+    
     return <form className="form signup-form" onSubmit={formik.handleSubmit}>
         <h1>Sign Up</h1>
         <input onBlur={formik.handleBlur} onChange={formik.handleChange}type="text" name="FirstName" placeholder="First Name" /><br/>

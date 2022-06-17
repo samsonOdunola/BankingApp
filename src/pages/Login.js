@@ -11,8 +11,7 @@ const Login = () => {
             email:"",
             password:"",
         },
-        onSubmit:(values)=>{
-            // console.log(values)
+        onSubmit:(values)=>{            
             if(localStorage.AllUser){
                 let alluser = JSON.parse(localStorage.AllUser);
                 let user = alluser.find(user=>user.email===values.email && user.password===values.password)
