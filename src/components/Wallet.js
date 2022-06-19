@@ -10,8 +10,7 @@ const Wallet = () => {
     const createWallet = () => {        
         setModal(true);
     }
-    const deleteWallet = (index,Amount) => {
-        let amount = Number(Amount)
+    const deleteWallet = (index,Amount) => {        
         let alluser=JSON.parse(localStorage.AllUser)
         let userAccountnum = activeUser.Accountnum;
         let indexs = alluser.findIndex(user=>user.Accountnum===userAccountnum)        
@@ -129,11 +128,12 @@ const Wallet = () => {
                     <h3>{walletName}</h3>
                     <p>$ {amount}</p>
                     <div className="wallet-buttons"><button>Fund</button><button onClick={()=>deleteWallet(index,amount)} >Delete</button><button>Withdraw</button></div>
+                    <div className="fundwallet"></div>
                 </div>
             })}
                
     </div>
-    <button onClick={createWallet}>Create Wallet</button>
+    <button className="createwallet" onClick={createWallet}>Create Wallet</button>
     </div>;
 }
 

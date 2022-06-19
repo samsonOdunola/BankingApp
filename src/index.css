@@ -5,10 +5,8 @@
   font-family: "josefin sans"
 }
 body{
-  background: linear-gradient(40deg, #DCF0F5, #F7F3FA);
-  height: 100vh;
-  
-  
+  background: transparent;
+  height: 100%;
 }
 .form{
   text-align: center;
@@ -83,13 +81,15 @@ main{
   height: 100vh;
   color:#111010;
 }
+.mobileonly{
+  display: none;
+}
 main header{
   height:10vh;
   display:flex;
   padding:0vw 2vw;
   justify-content: space-between; 
-  align-items: center; 
-  
+  align-items: center;  
   
 }
 
@@ -110,8 +110,7 @@ nav{
   padding:0;  
   width:30vw;
   padding:2vw 1vw;
-  background-color: transparent;
-  /* background-color: #06113c; */
+  background-color: transparent;  
   height:90vh;
   display: flex;
   flex-direction: column;
@@ -199,8 +198,7 @@ main section{
 }
 .dashboard .recent{
   background-color: hsla(0, 0%, 100%, 0.308);
-  height:80%;
-  /* padding-top:1vw; */
+  height:80%;  
   padding:1vw 1vw;
   border-radius: 20px;
   
@@ -417,16 +415,29 @@ main section{
   position: absolute;
   display: block;  
   z-index: 1;
-  left:40%;
+  left:40%;  
   
   
 }
-.walletcontainer{    
+.walletcontainer{
+  position: relative;    
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+}
+.walletcontainer .wallet .fundwallet{
+  position:absolute;
+  background-color: black;
+  z-index: 1;
+  /* width:inherit;
+  height: 7vw; */
+  left:0;
+  top:0;
+  border-radius: 8px;
+  
+  
 }
 .mainwalletcontainer button{
     width: fit-content;
@@ -451,6 +462,8 @@ main section{
   align-items: center;
   padding:0.3vw 0;
   justify-content:space-between;
+  width: fit-content;
+  padding: 0.5vw 0.5vw;
   height: 7vw;
 }
 .wallet-buttons{
@@ -467,6 +480,7 @@ main section{
   border-style: none;
   border-radius: 20px;
   cursor: pointer;
+  margin:0 0.8vw;
 }
 .wallet-buttons button:hover{
   background-color: #06113c;
