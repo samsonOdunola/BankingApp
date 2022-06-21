@@ -1,47 +1,46 @@
 @media screen and (max-width: 800px) {
-    .mobileonly{
-        display: block;
-    }
-    .mobilenav{
-        font-size: 8vw;
-    }
-    main header .iconCluster{
-        display: none;
-    }
-    
-    .mobilenavcontent{
-        position:absolute;
-        background-color:#1a1919;
-        padding: 5vw 0;
-        width:40vw;
-        height:100vh;
-        top:0;
-        left:0;
-        z-index: 3;
-        
-    }
-    .mobilenavcontent p{
-        color:white;
-        text-align: left;
-        margin-left: 2vw;
-    }
-.mobilenavcontent ul {
+  .mobileonly {
+    display: block;
+  }
+  .mobilenav {
+    font-size: 8vw;
+  }
+  main header .iconCluster {
+    display: none;
+  }
+
+  .mobilenavcontent {
+    position: absolute;
+    background-color: #1a1919;
+    padding: 5vw 0;
+    width: 40vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+  .mobilenavcontent p {
+    color: white;
+    text-align: left;
+    margin-left: 2vw;
+  }
+  .mobilenavcontent ul {
     list-style-type: none;
     padding: 5vw 2vw;
     margin-top: 5vh;
     /* background-color: #06113c; */
-}
+  }
 
-.mobilenavcontent ul .link {
+  .mobilenavcontent ul .link {
     text-decoration: none;
     color: #ffffff;
-}
+  }
 
-.mobilenavcontent ul li {
+  .mobilenavcontent ul li {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 3vw;    
+    font-size: 3vw;
     padding: 1vw 1.5vw;
     color: 111010;
     background-color: transparent;
@@ -50,45 +49,44 @@
     border-radius: 10px;
     font-weight: 300;
     cursor: pointer;
-}
+  }
 
-.mobilenavcontent ul li .menu-icon {
+  .mobilenavcontent ul li .menu-icon {
     margin-right: 1vw;
     font-size: 5vw;
-
-}
-.mobilenavcontent .logoutbtn{
-    margin-top:30vh;
+  }
+  .mobilenavcontent .logoutbtn {
+    margin-top: 30vh;
     color: red;
     font-weight: 500;
-}
+  }
 
-    .form {
-       text-align: center;
-       background: hsla(0, 0%, 100%, 0.356);
-       padding: 2.5vw;
-       max-width: 90vw;
-       margin: 5vh auto 0 auto;
-       border-radius: 8px;
-       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.171);
-    }
-    .form h1 {
+  .form {
+    text-align: center;
+    background: hsla(0, 0%, 100%, 0.356);
+    padding: 2.5vw;
+    max-width: 90vw;
+    margin: 5vh auto 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.171);
+  }
+  .form h1 {
     font-size: 10vw;
     text-transform: uppercase;
     font-weight: 800;
-    }
+  }
 
-    .form input {    
+  .form input {
     padding: 1vw;
     margin: 2vw 0;
     font-size: 5vw;
-    }
+  }
 
-   .form input::placeholder {    
+  .form input::placeholder {
     font-size: 3vw;
-   }
+  }
 
-.form select {
+  .form select {
     width: 100%;
     cursor: pointer;
     padding: 0.7vw;
@@ -99,115 +97,104 @@
     background: transparent;
     outline: none;
     font-size: 3vw;
-}
+  }
 
-.form button {
+  .form button {
     padding: 0.7vw 0;
-    margin: 20px 0;    
+    margin: 20px 0;
     font-size: 4vw;
-}
+  }
 
-.form p {    
+  .form p {
     font-size: 3vw;
-}
+  }
 
-.form p .link {
+  .form p .link {
     text-decoration: none;
     color: red;
-}
+  }
 
-.error {
+  .error {
     color: rgb(255, 0, 0);
     text-align: left;
-
-}
-nav {
-    display: none;    
-}
-main section {
+  }
+  nav {
+    display: none;
+  }
+  main section {
     display: block;
-
-}
-.dashboard {
-    background-color: transparent;    
+  }
+  .dashboard {
+    background-color: transparent;
     padding: 2vw 1vw;
     height: 90vh;
     display: block;
-    margin:0 auto;
+    margin: 0 auto;
     width: 90vw;
-}
-.dashboard .accountinfo {
+  }
+  .dashboard .accountinfo {
     text-align: center;
     width: 100%;
     background-color: transparent;
-
-}
-.dashboard .accountinfo h3 {
-    font-size: 2vw;    
+  }
+  .dashboard .accountinfo h3 {
+    font-size: 2vw;
     letter-spacing: 2px;
-}
+  }
 
-.dashboard .accountinfo p {
+  .dashboard .accountinfo p {
     font-size: 2.3vw;
     font-weight: 700;
     margin-top: 2vw;
-}
+  }
 
-.dashboard .accountinfo .acctnum {
+  .dashboard .accountinfo .acctnum {
     font-size: 2vw;
     margin-bottom: 2vh;
-}
-.cardinfo {   
+  }
+  .cardinfo {
     display: none;
-    
-}
-.transaction .transacvalue {    
+  }
+  .transaction .transacvalue {
     font-size: 2vw;
-
-}
-.transfer {    
+  }
+  .transfer {
     width: 100vw;
-}
-.form2 {
+  }
+  .form2 {
     text-align: center;
     background: hsla(0, 0%, 100%, 0.356);
     padding: 2.5vw;
     max-width: 90%;
     margin: 40px auto;
     border-radius: 10px;
+  }
 
-}
-
-
-
-.form2 input {    
-    margin: 2vw 0;    
+  .form2 input {
+    margin: 2vw 0;
     font-size: 2.2vw;
-}
+  }
 
-
-.form2 button {
-    width: 50%;    
+  .form2 button {
+    width: 50%;
     font-size: 2.5vw;
-    
-}
-.walletcontainer .wallet {
+  }
+  .walletcontainer .wallet {
     padding: 2vw 2vw;
     width: fit-content;
     height: fit-content;
-}
-.wallet h3{
+  }
+  .wallet h3 {
     font-size: 2vw;
     margin-bottom: 2vw;
-}
-.wallet p {
+  }
+  .wallet p {
     font-size: 2vw;
     font-weight: 500;
     margin-bottom: 2vw;
-}
+  }
 
-
-.wallet-buttons button {
+  .wallet-buttons button {
     font-size: 1vw;
     width: fit-content;
     background-color: #111010;
@@ -216,23 +203,17 @@ main section {
     border-radius: 10px;
     cursor: pointer;
     margin: 0 0.8vw;
-}
-.mainwalletcontainer .createwallet {
+  }
+  .mainwalletcontainer .createwallet {
     width: fit-content;
     padding: 2vw;
-    
+
     font-size: 2vw;
     font-weight: 500;
-    
+
     border-radius: 8px;
     margin: 0 auto;
 
     display: block;
+  }
 }
-
-
-
-
-
-}
-    
