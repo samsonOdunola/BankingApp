@@ -5,18 +5,23 @@ import {
 import { GrLogout } from "react-icons/gr";
 import { TbSend } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { currentUser } from "../redux/actions";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const logout = () => {
-    localStorage.removeItem("currentUser");
+    dispatch(currentUser([]));
     navigate("/");
   };
+  const activeUser = useSelector((state) => state.states.currentUser);
 
   return (
     <nav>
       <ul>
-        <Link className="link" to="dashboard">
+        <Link className="link" to={`dashboard/${activeUser._id}`}>
           <li>
             <MdOutlineDashboard className="menu-icon" />
             Dashboard

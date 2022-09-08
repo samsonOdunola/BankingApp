@@ -1,9 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Formik, useFormik } from "formik";
+import axios from "axios";
+import { useState } from "react";
+import { useFormik } from "formik";
+import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 const Signup = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [alluser, setAlluser] = useState([]);
+  const [response, setResponse] = useState("");
+  const [encodedImage, setEncodedImage] = useState("");
 
   function generateRandomnumber(Accounttype) {
     if (Accounttype === "Savings") {
@@ -12,27 +17,38 @@ const Signup = () => {
       return Number("" + 202 + Math.floor(Math.random() * 10000000 + 1));
     }
   }
+  const handleImage = (e) => {
+    let image = e.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(image);
+    reader.onload = () => {
+      setEncodedImage(reader.result);
+    };
+  };
+
   const saveUsertoDB = (values, generateRandomnumber) => {
+    let endpoint = "http://localhost:5000/user/signup";
+
     let Accountnum = generateRandomnumber;
     let AccountBalance = 2000;
     let recentTransaction = [];
     let wallets = [];
-    let user = {
+    let userInfo = {
       ...values,
       Accountnum,
       AccountBalance,
       recentTransaction,
       wallets,
     };
-    if (!localStorage.AllUser) {
-      let finalAllUser = [];
-      finalAllUser.push(user);
-      localStorage.AllUser = JSON.stringify(finalAllUser);
-    } else {
-      let finalAllUser = JSON.parse(localStorage.AllUser);
-      finalAllUser.push(user);
-      localStorage.AllUser = JSON.stringify(finalAllUser);
-    }
+    axios.post(endpoint, userInfo).then((res) => {
+      if (res.data.status) {
+        setResponse(res.data.message);
+        setLoading(false);
+        setTimeout(() => {
+          navigate(`/`);
+        }, 3000);
+      }
+    });
   };
 
   const formik = useFormik({
@@ -43,24 +59,14 @@ const Signup = () => {
       Accounttype: "",
       email: "",
       password: "",
+      image: "",
     },
     onSubmit: (values) => {
-      if (localStorage.AllUser) {
-        let alluser = JSON.parse(localStorage.AllUser);
-        let user = alluser.find((user) => user.email === values.email);
-        if (user !== undefined) {
-          alert("User already exists");
-          navigate("/");
-        } else {
-          saveUsertoDB(values, generateRandomnumber(values.Accounttype));
-          alert("Account Created Successfully");
-          navigate("/");
-        }
-      } else {
-        saveUsertoDB(values, generateRandomnumber(values.Accounttype));
-        alert("Account Created Successfully");
-        navigate("/");
-      }
+      setLoading(true);
+      saveUsertoDB(
+        { ...values, image: encodedImage },
+        generateRandomnumber(values.Accounttype)
+      );
     },
 
     validate: (values) => {
@@ -68,16 +74,20 @@ const Signup = () => {
       if (values.FirstName === "") {
         errors.FirstName = "FirstName is required!";
       }
-      if (values.LastName == "") {
+      if (values.LastName === "") {
         errors.LastName = "last Name is required!";
       }
       return errors;
     },
   });
-  console.log(formik.errors.FirstName);
 
   return (
     <form className="form signup-form" onSubmit={formik.handleSubmit}>
+      {response && (
+        <Alert key="success" variant="success">
+          {response}
+        </Alert>
+      )}
       <h1>Sign Up</h1>
       <input
         onBlur={formik.handleBlur}
@@ -145,8 +155,25 @@ const Signup = () => {
       />
       <br />
       <div className="error">{formik.errors.password}</div>
+      <label htmlFor="image">Select a Profile picture</label>
+      <input
+        type="file"
+        onChange={(e) => handleImage(e)}
+        // onChange={(e) => {
+        //   handleImage(e);
 
-      <button type="submit">Create Account</button>
+        //   // formik.setFieldValue("image", encodedImage);
+        // }}
+        name="image"
+      />
+
+      <button type="submit">
+        {loading ? (
+          <Spinner animation="border" variant="light" />
+        ) : (
+          "Create Account"
+        )}
+      </button>
       <p>
         Have an account?{" "}
         <Link className="link" to="/">

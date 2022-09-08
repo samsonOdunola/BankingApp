@@ -13,10 +13,11 @@ import {
 import { GrLogout } from "react-icons/gr";
 import { TbSend } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [activeUser, setActiveUser] = useState();
-  const [loading, setLoading] = useState(false);
+  // const [activeUser, setActiveUser] = useState({});
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -24,21 +25,16 @@ const Home = () => {
     localStorage.removeItem("currentUser");
     navigate("/");
   };
+  const activeUser = useSelector((state) => state.states.currentUser);
 
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
-  const getCurrentUser = () => {
-    let currentUser = JSON.parse(localStorage.currentUser);
-    setActiveUser(currentUser);
-    setLoading(true);
-  };
-  const reset = () => {
-    console.log("working");
-    localStorage.removeItem("AllUser");
-    localStorage.removeItem("currentUser");
-    navigate("/signup");
-  };
+  // useEffect(() => {
+  //   getCurrentUser();
+  // }, []);
+  // const getCurrentUser = () => {
+
+  //   setLoading(true);
+  // };
+
   const handleMobilemenu = () => {
     if (showMenu) {
       setShowMenu(false);
@@ -102,18 +98,17 @@ const Home = () => {
         )}
         <h1>LoftBank</h1>
         <div className="iconCluster">
-          <p>{loading && `Hi, ${activeUser.FirstName}`}</p>
-          <img src={require("../images/image-1.png")} alt="" />
-          <MdNotifications onClick={reset} />
+          <p>
+            {loading && `Hi, ${activeUser.FirstName} ${activeUser.LastName} `}
+          </p>
+          <img src={activeUser.image} alt="" />
+          <MdNotifications />
         </div>
       </header>
       <section>
         <Navbar />
         <Routes>
-          <Route
-            path="dashboard"
-            element={<Dashboard activeUser={activeUser} />}
-          ></Route>
+          <Route path="dashboard/:userid" element={<Dashboard />}></Route>
           <Route
             path="transfer"
             element={<Transfer activeUser={activeUser} />}
